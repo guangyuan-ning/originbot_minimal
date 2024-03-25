@@ -1,27 +1,29 @@
-# 功能介绍
+English| [简体中文](./README_cn.md)
 
-OriginBot是一款智能机器人开源套件，更是一个社区共建的开源项目，旨在让每一位参与者享受机器人开发的乐趣。该项目是OriginBot机器人最小功能系统，该最小系统可接受/cmd_vel指令控制机器人运动并反馈/Odom信息。该系统包含以下三个功能包：
+# Function Introduction
 
-- originbot_base：机器人底盘驱动
-- originbot_driver：机器人串口驱动包
-- originbot_msgs： OriginBot自定义通信接口
+OriginBot is an intelligent robot open source kit, and also a community co-built open source project, designed to let every participant enjoy the fun of robot development. This project is the minimum function system of OriginBot robot, which can accept /cmd_vel command to control robot movement and feedback /Odom information. This system includes the following three function packages:
 
-# 物料清单
+- originbot_base: Robot chassis drive
+- originbot_driver: Robot serial drive package
+- originbot_msgs: OriginBot custom communication interface
 
-| 机器人名称          | 生产厂家 | 参考链接                                                     |
-| :------------------ | -------- | ------------------------------------------------------------ |
-| OriginBot智能机器人 | 古月居   | [购买链接](https://www.originbot.org/)                       |
-| RDK X3 Robot        | 多厂家 | [购买链接](https://developer.horizon.ai/sunrise) |
+# Bill of Materials
 
-# 使用方法
+| Robot Name         | Manufacturer | Reference Link                                               |
+| :------------------ | ------------ | ------------------------------------------------------------ |
+| OriginBot Intelligent Robot | GuYueJu | [Purchase Link](https://www.originbot.org/)          |
+| RDK X3 Robot        | Multiple Manufacturers | [Purchase Link](https://developer.horizon.ai/sunrise) |
 
-## 准备工作
+# Instructions
 
-参考OriginBot机器人官网的[使用指引](https://www.originbot.org/guide/quick_guide/)，完成机器人的硬件组装。
+## Preparation
 
-## 安装 
+Refer to the [user guide](https://www.originbot.org/guide/quick_guide/) on OriginBot robot's official website to complete the hardware assembly of the robot.
 
-点击[NodeHub OriginBot项目](http://it-dev.horizon.ai/nodehubDetail/170117036053371431)右上角快速部署，通过终端或者VNC连接机器人，复制如下命令在RDK的系统上运行，完成人OriginBot机器人最小系统安装。
+## Installation
+
+Click on the upper right corner of the [NodeHub OriginBot project](http://it-dev.horizon.ai/nodehubDetail/170117036053371431) for fast deployment, connect to the robot through terminal or VNC, copy and run the following commands on the RDK system to install the minimal system of OriginBot robot.
 
 ```bash
 sudo apt update
@@ -30,25 +32,25 @@ sudo apt install -y tros-originbot-base tros-serial tros-originbot-msgs
 
 
 
-## 运行
+## Operation
 
-### 启动机器人
+### Start Robot
 
-在终端中输入：
+Enter the following command in the terminal:
 
 ```bash
 source /opt/tros/setup.bash
 ros2 launch originbot_base robot.launch.py 
 ```
 
-运行成功后可看到如下提示
+After successful execution, you will see the following prompt
 
 ```shell
 root@ubuntu:/userdata# ros2 launch originbot_base robot.launch.py
 [INFO] [launch]: All log files can be found below /root/.ros/log/2023-07-09-16-49-58-754723-ubuntu-6891
 [INFO] [launch]: Default logging verbosity is set to INFO
 [INFO] [originbot_base-1]: process started with pid [6893]
-[INFO] [static_transform_publisher-2]: process started with pid [6895]
+```[INFO] [static_transform_publisher-2]: process started with pid [6895]
 [INFO] [static_transform_publisher-3]: process started with pid [6897]
 [INFO] [static_transform_publisher-4]: process started with pid [6899]
 [originbot_base-1] Loading parameters:
@@ -64,16 +66,16 @@ root@ubuntu:/userdata# ros2 launch originbot_base robot.launch.py
 
 ```
 
-### 键盘控制机器人
+### Keyboard Control Robot
 
-在另一个终端中运行如下指令打开键盘控制功能：
+Run the following command in another terminal to enable keyboard control:
 
 ```bash
 source /opt/tros/setup.bash
 ros2 run teleop_twist_keyboard teleop_twist_keyboard 
 ```
 
-运行成功后出现以下提示
+After successful execution, the following prompts will appear:
 
 ```bash
 This node takes keypresses from the keyboard and publishes them
@@ -98,42 +100,40 @@ anything else : stop
 q/z : increase/decrease max speeds by 10%
 w/x : increase/decrease only linear speed by 10%
 e/c : increase/decrease only angular speed by 10%
-
-CTRL-C to quit
+```CTRL-C to quit
 
 currently:      speed 0.5       turn 1.0
 ```
 
-根据提示使用键盘对应按键控制机器人运动。
+Control the robot's movement using the corresponding keys on the keyboard.
 
-# 接口说明
-## 话题
+# Interface Description
+## Topics
 
-### 订阅话题
+### Subscribed Topics
 
-| 名称                          | 消息类型                                                     | 说明                                                   |
-| ----------------------------- | ------------------------------------------------------------ | ------------------------------------------------------ |
-| /cmd_vel                      | geometry_msgs/msg/Twist                                      | 发布控制机器人移动的速度指令                           |
-
-
-### 发布话题
-
-| 名称                          | 消息类型                                                     | 说明                                                   |
-| ----------------------------- | ------------------------------------------------------------ | ------------------------------------------------------ |
-| /originbot_status             |  originbot_msgs/msg/OriginbotStatus                          | 发布OriginBot机器人状态                           |
-| /odom                         |  nav_msgs/msg/Odometry                                       | 发布OriginBot里程计信息                           |
-| /tf_static                    |  tf2_msgs/msg/TFMessage                                      | 发布OriginBot相关坐标系信息                           |
-
-## 参数
-| 参数名                | 类型        | 解释                                 | 是否必须 | 默认值                                               |
-| --------------------- | ----------- | ---------------------------------- | -------- | --------------------------- |
-| auto_stop_on_arg      | bool    |     是否使能自动停止功能                 | 否       | false |
-| use_imu_arg      | bool    |     是否使能IMU                 | 否       | false |
-| pub_odom_arg      | bool    |     是否使能发布Odom话题                | 否       | true |
-| correct_factor_vx_arg      | float    |  线速度校正参数                | 否       | 0.898 |
-| correct_factor_vth_arg      | float    |  角速度校正参数                | 否       | 0.874 |
+| Name               | Message Type                   | Description                                  |
+| ------------------ | ------------------------------ | -------------------------------------------- |
+| /cmd_vel           | geometry_msgs/msg/Twist        | Publish velocity commands to control the robot's movement |
 
 
-# 常见问题
+### Published Topics
 
+| Name               | Message Type                   | Description                                  |
+| ------------------ | ------------------------------ | -------------------------------------------- |
+| /originbot_status  | originbot_msgs/msg/OriginbotStatus  | Publish OriginBot robot status       |
+| /odom              | nav_msgs/msg/Odometry           | Publish OriginBot odometry information       |
+| /tf_static         | tf2_msgs/msg/TFMessage          | Publish OriginBot related coordinate information       |
+
+## Parameters
+| Parameter Name      | Type         | Description                         | Required | Default Value                                        |
+| ------------------  | ------------- | ---------------------------------- | -------- | --------------------------- |
+| auto_stop_on_arg    | bool          | Enable automatic stop function      | No       | false |
+| use_imu_arg         | bool          | Enable IMU                          | No       | false |
+| pub_odom_arg        | bool          | Enable publishing Odom topic        | No       | true |
+| correct_factor_vx_arg  | float       | Linear velocity correction parameter | No       | 0.898 |
+| correct_factor_vth_arg | float       | Angular velocity correction parameter | No       | 0.874 |
+
+
+# FAQ
 

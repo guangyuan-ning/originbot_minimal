@@ -1,14 +1,14 @@
-English| [简体中文](./README_cn.md)
+[English](./README.md) | 简体中文
 
-# 串行通信库
+# Serial Communication Library
 
 [![Build Status](https://travis-ci.org/wjwwood/serial.svg?branch=master)](https://travis-ci.org/wjwwood/serial)*(Linux and OS X)* [![Build Status](https://ci.appveyor.com/api/projects/status/github/wjwwood/serial)](https://ci.appveyor.com/project/wjwwood/serial)*(Windows)*
 
-This is a cross-platform library for interfacing with rs-232 serial like ports written in C++. It provides a modern C++ interface with a workflow designed to look and feel like PySerial, but with the speed and control provided by C++.
+This is a cross-platform library for interfacing with rs-232 serial like ports written in C++. It provides a modern C++ interface with a workflow designed to look and feel like PySerial, but with the speed and control provided by C++. 
 
-This library is in use in several robotics related projects and can be built and installed to the OS like most unix libraries with make and then sudo make install, but because it is a catkin project it can also be built alongside other catkin projects in a catkin workspace.
+This library is in use in several robotics related projects and can be built and installed to the OS like most unix libraries with make and then sudo make install, but because it is a catkin project it can also be built along side other catkin projects in a catkin workspace.
 
-Serial is a class that provides the basic interface common to serial libraries (open, close, read, write, etc..) and requires no extra dependencies. It also provides tight control over timeouts and control over handshaking lines.
+Serial is a class that provides the basic interface common to serial libraries (open, close, read, write, etc..) and requires no extra dependencies. It also provides tight control over timeouts and control over handshaking lines. 
 
 ### Documentation
 
@@ -26,7 +26,7 @@ Required:
   * [catkin_pkg](http://pypi.python.org/pypi/catkin_pkg/) - Runtime Python library for catkin
 
 Optional (for tests): 
-* [Boost](http://www.boost.org/) - Boost C++ libraries
+* [Boost](http://www.boost.org/) - Boost C++ librairies
 
 Optional (for documentation):
 * [Doxygen](http://www.doxygen.org/) - Documentation generation tool
@@ -48,7 +48,9 @@ Build and run the tests:
 
 Build the documentation:
 
-    make docInstall:
+    make doc
+
+Install:
 
     make install
 
