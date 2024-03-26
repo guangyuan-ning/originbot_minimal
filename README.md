@@ -50,7 +50,7 @@ root@ubuntu:/userdata# ros2 launch originbot_base robot.launch.py
 [INFO] [launch]: All log files can be found below /root/.ros/log/2023-07-09-16-49-58-754723-ubuntu-6891
 [INFO] [launch]: Default logging verbosity is set to INFO
 [INFO] [originbot_base-1]: process started with pid [6893]
-```[INFO] [static_transform_publisher-2]: process started with pid [6895]
+[INFO] [static_transform_publisher-2]: process started with pid [6895]
 [INFO] [static_transform_publisher-3]: process started with pid [6897]
 [INFO] [static_transform_publisher-4]: process started with pid [6899]
 [originbot_base-1] Loading parameters:
@@ -100,7 +100,8 @@ anything else : stop
 q/z : increase/decrease max speeds by 10%
 w/x : increase/decrease only linear speed by 10%
 e/c : increase/decrease only angular speed by 10%
-```CTRL-C to quit
+
+CTRL-C to quit
 
 currently:      speed 0.5       turn 1.0
 ```
